@@ -1,43 +1,55 @@
-package stackLinkedList;
-import java.util.*;
+package ShoppingCart;
+
+
+
+
+import java.util.Scanner;
+
 public class User {
-	public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        StackClass stack = new StackClass();
-        while (true) {
-            System.out.println("\nStack MENU(size -- 10)");
-            System.out.println("1. Add an element");
-            System.out.println("2. See the Top element.");
-            System.out.println("3. Remove top element.");
-            System.out.println("4. Display stack elements.");
-            System.out.println("5. Exit");
-            System.out.println("Select your choice: ");
-            int choice = in.nextInt();
-            switch (choice) {
-            case 1:
-                System.out.println("Enter an Element : ");
-                stack.push(in.nextInt());
-                break;
+
+   public static void main(String args[]) {
+
+       
+       char choice;
+       Shop aShop = new Shop();
+       Scanner sc = new Scanner(System.in);
+      
+       System.out.println("-----ITEM------");
+       do {
+           System.out.println("1. Add items to cart");
+           System.out.println("2. Update Quantity of Existing Item");
+           System.out.println("3. Display bill");
+           System.out.println("4. Check available items");
+           System.out.println("5. Remove items from cart");
+           System.out.println("6. Exit");
+           System.out.println("Choice:");
+           choice = sc.nextLine().charAt(0);
+           switch (choice) {
+           case '1':
+               aShop.addItem();
+               break;
+
+           case '2':
+               aShop.updateQuantity();
+               break;
+
+           case '3':
+               aShop.displayBill();
+               break;
+
+           case '4':
+        	   aShop.checkItems();
+        	   	break;
+           case '5':
+        	   aShop.removeItem();
+        	   	break;
+           case '6':
+               System.out.println("Thank you!\n");
+               break;
+           }
+       } while (choice != '6');
+       sc.close();
+   }
+
  
-            case 2:
-                System.out.printf("Top element is: {%d}", stack.topValue());
-                break;
- 
-            case 3:
-                System.out.printf("Element removed: {%d}", stack.pop());
-                break;
- 
-            case 4:
-                stack.display();
-                break;
- 
-            case 5:
-            default:
-                System.exit(0);
-                break;
-            }
-            System.out.printf("\n");
-            
-        }
-    }
 }
